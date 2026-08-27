@@ -48,3 +48,27 @@ console.log(typeof bigNumber); // bigInt
 
 console.log(myFunction);
 console.log(typeof(myFunction));
+
+
+
+//+++++++++++++++++++++++++++++++++++++++++++
+// Stack ( primitive ), Heap (Non - Primitive)
+
+let myYoutubeName = "mohitsingh"
+
+let anotherName = myYoutubeName
+anotherName = "chaiAurCode"
+
+console.log(myYoutubeName);
+console.log(anotherName);
+
+let userOne = {
+    email: "user@google.com",
+    upi : "user@oksbi"
+}
+
+let userTwo = userOne
+
+userTwo.email = "mohitsingh@gmail.com"
+console.log(userOne);
+console.log(userTwo);
