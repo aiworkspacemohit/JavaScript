@@ -1,0 +1,71 @@
+JavaScript execution context 
+
+{} -> global execution context -> this keyboard is used to know 
+
+js is single threaded 
+
+- Global execution context 
+- Function execution context 
+- eval execution context 
+
+{} -> Memory creation Phase
+   -> execution phase
+    
+
+
+Example code :
+let val1 = 30 
+let val2 = 3
+function addNum(num1, num2){
+    let total = num1 + num2
+    return total
+}
+let result1 = addNum(val1, val2)
+let result2 = addNum(10, 3)
+
+
+1. Global execution -> this 
+2. Memory phase     
+    val1 -> undefined 
+    val2 -> undefined 
+    addnum -> definition
+    result1 -> undefined
+    result2 -> undefined
+
+3. Execution phase 
+    val1 -> 30
+    val2 -> 3
+
+    // let result1 = addNum(val1, val2)
+    addNum -> {new variable environment + execution thread} // it will delete after performing its dedicated work 
+
+        Memory Phase :
+        val1 -> undefined 
+        val2 -> undefined
+        total -> undefined
+
+        Execution context: 
+        num1 -> 30
+        num2 -> 3
+        total -> 33 
+
+    result1 -> 33
+
+
+    // let result2 = addNum(10, 3)
+    addNum -> {new variable environment + execution thread} // it will delete after performing its dedicated work 
+
+        Memory Phase :
+        val1 -> undefined 
+        val2 -> undefined
+        total -> undefined
+
+        Execution context: 
+        num1 -> 10
+        num2 -> 3
+        total -> 13
+
+    result1 -> 13
+
+
+
