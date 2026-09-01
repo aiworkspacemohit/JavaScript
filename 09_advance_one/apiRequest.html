@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color:#F5F5DC;">
+    
+    <!-- Value	State	            Description
+            0	UNSENT	            Client has been created. open() not called yet.
+            1	OPENED	            open() has been called.
+            2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+            3	LOADING	            Downloading; responseText holds partial data.
+            4	DONE	            The operation is complete. -->
+
+
+</body>
+<script>
+    const requestUrl = 'https://api.github.com/users/aiworkspacemohit'
+
+
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl);
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState === 4){
+            if(xhr.status === 200){
+                console.log(this.responseText);
+                const data = JSON.parse(this.responseText)
+                console.log(typeof data);
+                // const data = JSON.parse(this.responseText)
+
+                console.log(data.followers);
+                console.log(data.organizations_url);
+                console.log(data.avatar_url);
+
+
+                const card = document.createElement("div");
+                card.style.backgroundColor = 'white';
+                card.style.padding = '20px';
+                card.style.width = "300px";
+                card.style.borderRadius = "10px";
+                card.style.textAlign = "center";
+                card.style.margin = "50px auto";
+                card.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
+
+                const img = document.createElement("img");
+                img.src = data.avatar_url;
+                card.appendChild(img);
+
+                img.style.hight = "150px";
+                img.style.width = "150px";
+                img.style.borderRadius = "50%";
+                img.style.objectFit = "cover";
+
+
+                const username = document.createElement('h2');
+                username.textContent = data.login;
+                card.appendChild(username);
+
+
+                const bio = document.createElement('p');
+                bio.textContent = data.bio;
+                card.appendChild(bio);
+
+                const followers = document.createElement('p');
+                followers.textContent = `Followers : ${data.followers}`;
+                card.appendChild(followers);
+
+                const profileLink = document.createElement('a');
+                profileLink.textContent = `Visit GitHub Profile`;
+                profileLink.href = data.html_url;
+                card.appendChild(profileLink);
+                profileLink.style.display = "inline-block";
+                profileLink.style.marginTop = "15px";
+                profileLink.style.textDecoration = "none";
+
+                document.body.appendChild(card);
+            } else {
+                console.log("User Not found");
+            }
+            
+
+            
+
+            
+        }
+    }
+    xhr.send() 
+
+</script>
+</html>
