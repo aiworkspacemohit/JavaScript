@@ -110,3 +110,15 @@ fetch('https://jsonplaceholder.typicode.com/users')
 .catch((error) => {
     console.log("E: ", error);
 })
+
+
+// Promises // async await // fetch 
+
+// fetch 
+
+// respones = fetch("some url")
+// it handles data :_____ using onfulfulled(), and onRejection()
+// and handle the web browser/ node  -> network request -> yes/No 
+// then store the data into => global memory => response 
+// response <= data
+// this is how fetch keyword works behind the scene
